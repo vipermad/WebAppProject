@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<form action="#" th:method="post" th:action="@{/}" th:object="${val}">
+	<label>Опишите задачу</label>
+
+	<input type="text" th:field="*{text}"/>
+
+	<input type="submit" value="Create!"/>
+</form>
+<br><br><br>
+<div id="task-list">
+
+	<tr th:each="task: ${tasks}">
+		<td th:text="${task.id}"/>
+		<td th:text="${task.text}"/>
+		<td th:text="${task.date}"/>
+
+	<br>
+	</tr>
+
+</div>
+
+</body>
+</html>

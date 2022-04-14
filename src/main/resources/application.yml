@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+spring:
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/todolist?useSSL=false
+    username: root
+    password: skillbox
+    driver-class-name : com.mysql.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    genertate-dll: true
+    hibernate:
+      dll-auto: update
+db:
+  hibernate:
+    dialect: org.hibernate.dialect.MySQL5Dialect
+    show_sql: true
+    hbm2dll:
+      auto: update
+
+
