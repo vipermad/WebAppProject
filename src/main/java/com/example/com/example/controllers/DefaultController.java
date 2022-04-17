@@ -3,12 +3,16 @@ package com.example.com.example.controllers;
 import com.example.com.example.entity.Task;
 import com.example.com.example.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +30,9 @@ public class DefaultController {
         }
 
         model.addAttribute("tasks", tasks);
+        Task tempTask = new Task();
+
+        model.addAttribute("tempTask", tempTask);
 
         return "index";
     }
@@ -34,9 +41,10 @@ public class DefaultController {
 
     //Создание нового дела
     @PostMapping(value = "/")
-    public String createTodo(@ModelAttribute(value = "val") String task) {
+    public String createTodo(@ModelAttribute(value = "tempTask") Task task) throws IOException {
+        System.out.println(task.toString());
 
-        taskRepository.save(new Task(task));
+        taskRepository.save(task);
 
         return "index";
     }

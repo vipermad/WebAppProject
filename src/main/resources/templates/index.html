@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<form action="#" th:method="post" th:action="@{/}" th:object="${val}">
+<form action="#" th:method="post" th:action="@{/}" th:object="${tempTask}">
 	<label>Опишите задачу</label>
 
 	<input type="text" th:field="*{text}"/>

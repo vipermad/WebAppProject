@@ -1,5 +1,7 @@
 package com.example.com.example.entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -15,19 +17,17 @@ public class Task {
     @Column(name = "date_create")
     private LocalDateTime date = LocalDateTime.now();
 
-
+    @Autowired
     public Task() {
     }
 
     public Task(String text) {
         this.text = text;
-        date = LocalDateTime.now();
     }
 
     public Task(int id, String text) {
         this.id = id;
         this.text = text;
-        date = LocalDateTime.now();
     }
 
     public int getId() {
@@ -48,5 +48,14 @@ public class Task {
 
     public LocalDateTime getDate() {
         return date;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", date=" + date +
+                '}';
     }
 }
